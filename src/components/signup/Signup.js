@@ -5,8 +5,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import LockRounded from '@material-ui/icons/LockRounded';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -15,23 +13,14 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import vehitoLogo from '../../assets/images/vehitoLogo.png';
+import Header from '../header/Header';
+import Footer from '../footer/Footer';
 
 const ValidEmailRegex = RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
 const ValidZipCodeRegex = RegExp(/^[0-9]{5,6}$/);
 const ValidPasswordRegex = RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,20}$/)
 
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="/#">
-                Vehito
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
 const useStyles = makeStyles((theme) => ({
     paper: {
         marginTop: theme.spacing(8),
@@ -41,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
     },
     avatar: {
         margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
     },
     form: {
         width: '100%',
@@ -51,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(3, 0, 2),
     },
 }));
-export default function SignUpPage() {
+export default function Signup() {
 
     const classes = useStyles();
 
@@ -116,12 +104,11 @@ export default function SignUpPage() {
 
     return (
         <div>
+            <Header showButtons={false} />
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className={classes.paper}>
-                    <Avatar className={classes.avatar}>
-                        <LockRounded />
-                    </Avatar>
+                    <Avatar className={classes.avatar} alt="logo" src={vehitoLogo} />
                     <Typography component="h1" variant="h5">
                         Sign Up
                 </Typography>
@@ -275,8 +262,8 @@ export default function SignUpPage() {
                             disabled={!values.email || !values.addressLine || !values.password || !values.confirmPassword || !values.organizationName || !values.country || !values.state || !values.city || !values.postalCode}
                         >
                             Sign Up
-                            </Button>
-                        <Grid container>
+                        </Button>
+                        <Grid container style={{ marginBottom: '1rem' }}>
                             <Grid item>
                                 <Link href="/login" variant="body2">
                                     {"Already have an account? Log In"}
@@ -285,10 +272,8 @@ export default function SignUpPage() {
                         </Grid>
                     </form>
                 </div>
-                <Box mt={8}>
-                    <Copyright />
-                </Box>
             </Container>
+            <Footer />
         </div>
     );
 }

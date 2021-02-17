@@ -1,0 +1,26 @@
+.company-logo {
+    width: 2rem;
+}
+
+.company-logo {
+    height: 35px;
+    animation: company-logo-spin infinite 8s linear;
+}
+
+.signup-btn {
+    background-color: lightgray;
+    color: black;
+}
+
+.header-btns-div {
+    width: 10rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+@keyframes company-logo-spin {
+    from {
+        transform: scaleX(-1);
+    }
+}
+
